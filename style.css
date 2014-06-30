@@ -440,6 +440,26 @@ header{
 	background-position: 0px center;
 }
 
+@media all and (max-width: 947px) {
+	.contact-form-area {
+		text-align: center;
+	}
+	.contact-form{
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 50px;
+	width: 70%;
+	}
+	.contact-information{
+	width: 70%;
+	min-width: 300px;
+	padding-left: 20px;
+	padding-top: 52px;
+	display: inline-block;
+	text-align: left;
+}
+
+}
 
 footer{
 	height: 75px;
