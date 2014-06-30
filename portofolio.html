@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Singolo Portofolio</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+	</script>
+	<script src="slider.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="site-width">
+				<a href="index.html#"><h1 class = "logo">Singolo<span>*</span></h1></a>
+				<img class = "header-menu-bar" src="images/list-icon.png">
+				<div class = "header-nav">
+					<a class="inactive-nav-bar" href ="index.html#">Home</a>
+					<span>&bull;</span>
+					<a class="inactive-nav-bar" href ="portofolio.html#">Portofolio</a>
+					<span>&bull;</span>
+					<a class="inactive-nav-bar" href ="about.html#">About</a>
+					<span>&bull;</span>
+					<a class="inactive-nav-bar" href ="contact.html#">Contact</a>
+				</div>
+			</div>
+		</header>
+		<div class="portofolio-content">
+			<div class="site-width">
+				<div class="title-services">
+					<h3>Portofolio</h3>
+					<p class="description">
+						Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+					</p>
+				</div>
+				<div class="buttons-projects">
+					<button class="p-button" data-type="all">All</button>
+					<button class="p-button" data-type="web-design">Web Design</button>
+					<button class="p-button" data-type="graphic-design">Graphic Design</button>
+					<button class="p-button" data-type="artwork">Artwork</button>
+				</div>
+				<div class="container-projects">
+					<a href="#" data-type='["artwork"]'><img src="images/image-1.png"></img></a><!--
+					--><a href="#" data-type='["web-design"]'><img src="images/image-2.png"></img></a><!--
+					--><a href="#" data-type='["web-design","artwork"]'><img src="images/image-3.png"></img></a><!--
+					--><a href="#" data-type='["graphic-design","artwork"]'><img src="images/image-4.png"></img></a><!--
+					--><a href="#" data-type='["web-design"]'><img src="images/image-5.png"></img></a><!--
+					--><a href="#" data-type='["graphic-design","artwork"]'><img src="images/image-6.png"></img></a><!--
+					--><a href="#" data-type='["web-design","graphic-design"]'><img src="images/image-7.png"></img></a><!--
+					--><a href="#" data-type='["web-design","artwork"]'><img src="images/image-8.png"></img></a><!--
+					--><a href="#" data-type='["graphic-design"]'><img src="images/image-3.png"></img></a><!--
+					--><a href="#" data-type='["web-design","graphic-design"]'><img src="images/image-2.png"></img></a><!--
+					--><a href="#" data-type='["artwork"]'><img src="images/image-5.png"></img></a><!--
+					--><a href="#" data-type='["graphic-design"]'><img src="images/image-4.png"></img></a>
+					
+				</div>							
+			</div>	
+		</div>
+	</div>
+	<footer>
+		<div class="site-width">
+			<h5 class="copyright">
+				&copy; Copyright 2013 <span>&bull;</span> by PSDchat.com
+			</h5>
+				<a href="#">
+					<img src="images/facebook.png">
+					<img src="images/facebook-hover.png">
+				</a>
+				<a href="#">
+					<img src="images/google.png">
+					<img src="images/google-hover.png">
+				</a>
+				<a href="#">
+					<img src="images/twitter.png">
+					<img src="images/twitter-hover.png">
+				</a>
+				<a href="#">
+					<img src="images/linkedin.png">
+					<img src="images/linkedin-hover.png">
+				</a>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		var buttonProjects = $('button.p-button');
+
+
+		buttonProjects.on('click', function () {
+
+			buttonClick( $('div.container-projects'), $(this).data('type') , 200 )
+		} );
+
+		function buttonClick ( container, typeB , speed) {
+			// body...
+			var type = typeB;
+			
+			var children = container.children();
+			// children.css('display', 'inline-block');
+			// console.log( "Aici", children.filter( function() { return $(this).css("display") == "inline-block" }));
+			// children.filter( function() { return $(this).css("display") == "inline-block" }).fadeOut();
+			childrenVisible = container.children('a:visible');
+			console.log(childrenVisible);
+			childrenVisible.children().fadeOut(speed);
+			childrenVisible.fadeOut(speed, function() {
+				if (type ==='all') {
+			
+				children.fadeIn();
+				children.children().fadeIn();
+
+
+				}  else {
+
+
+
+				for (var i = 0; i < children.length; i++) {
+						
+						
+	  					var typeProject = children.eq(i).data('type');
+	  					
+
+						if( typeProject.indexOf(type) >= 0)
+
+	    					children.eq(i).fadeIn(speed);
+	    					children.eq(i).children().fadeIn(speed);
+
+	  					// else 
+	  					// 	children.eq(i).css({
+								
+	    			// 			'opacity': 1,
+	    			// 			'display':'none'
+
+	    			// 		});
+	  			}
+				}
+			});
+			
+		
+			
+				
+		};	
+	</script>
+</body>
+<script type="text/javascript">
+
+		var active = true;
+	    $('.header-menu-bar').on('click', toggleMenuBar);
+</script>	
+</body>
+</html>	
+
