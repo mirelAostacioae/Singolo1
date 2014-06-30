@@ -429,7 +429,7 @@ footer{
 .copyright span{
 	font-size: 6px;
 }
-footer .copyright{
+.copyright{
 	position: absolute;
 	top: 30px;
 }
@@ -450,6 +450,21 @@ footer a img:last-child{
 footer a:hover img:last-child{
 	display: initial;
 }
+
+@media all and (max-width: 400px) {
+	footer{
+		text-align: center;
+		height: auto;
+	}
+	.copyright{
+		position:relative;
+		margin-top: 23px;
+		padding-bottom: 23px;
+		top:0;
+		
+	}
+	
+}	
 
 /* Pentru slider
 */
