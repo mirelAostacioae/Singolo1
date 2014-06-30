@@ -122,38 +122,76 @@ getRandColor = function() {
 }
 
 
-function toggleMenuBar () {
+// function toggleMenuBar () {
 	
-	if(active) { 
-	$('.header-nav').children('a').removeClass('inactive-nav-bar')
-								.addClass('active-nav-bar');
-	var hh = $('.header-nav').children('a').height() * $('.header-nav').children('a').length 							
-	$("header").css('height', 90 + hh );
+// 	if(active) { 
+// 	$('.header-nav').children('a').removeClass('inactive-nav-bar')
+// 								.addClass('active-nav-bar');
+// 	var hh = $('.header-nav').children('a').height() * $('.header-nav').children('a').length 							
+// 	$("header").css('height', 90 + hh );
 
-} else {
+// } else {
 	
-	$('.header-nav').children('a').addClass('inactive-nav-bar')
-								.removeClass('active-nav-bar');
-	$("header").css('height', 90);
-}
-active = !active;
-}
+// 	$('.header-nav').children('a').addClass('inactive-nav-bar')
+// 								.removeClass('active-nav-bar');
+// 	$("header").css('height', 90);
+// }
+// active = !active;
+// }
 	    	
 	    								
-function resizeHeight () {
-	if($(window).width() > 600){
-		$("header").css('height', 90);
-		$('.header-nav').children('a').addClass('inactive-nav-bar')
-									  .removeClass('active-nav-bar');
-		active = true;
+// function resizeHeight () {
+	
+// 	if($(window).width() > 600){
+// 		$("header").css('height', 90);
+// 		$('.header-nav').children('a').addClass('inactive-nav-bar')
+// 									  .removeClass('active-nav-bar');
+// 		active = true;
+// 	}
+// }
+
+var AdapptiveHeader = function ( header_nav, activeClass, inactiveClass , defaultHeaderHeight) {
+
+
+	this.defaultHeaderHeight = defaultHeaderHeight;
+	this.header = $('header');
+	this.header_nav = header_nav;
+	this.activeClass = activeClass;
+	this.inactiveClass = inactiveClass;
+	this.active = true;
+	this.children = this.header_nav.children('a');
+	console.log('this is length' + this.children.length);
+	
+	// this.resizeHeight();
+};
+AdapptiveHeader.prototype.toggleMenuBar = function() {
+	
+	if(this.active) { 
+
+	console.log(this.children);
+	this.children.removeClass(this.inactiveClass)
+				 .addClass(this.activeClass);
+	this.headerHeight = this.children.height() * this.children.length;					
+	this.header.css('height', this.defaultHeaderHeight + this.headerHeight );
+
+	} else {
+		
+		this.children.addClass(this.inactiveClass)
+					 .removeClass(this.activeClass);
+		this.header.css('height', this.defaultHeaderHeight);
 	}
-}
+	this.active = !this.active;
+	
+};
 
+AdapptiveHeader.prototype.resizeHeight = function() {
+	// body...
 
+	if($(window).width() > 600){
+		this.header.css('height', this.defaultHeaderHeight);
+		this.children.addClass(this.inactiveClass)
+					 .removeClass(this.activeClass);
+		this.active = true;
+	}
 
-
-// function selectProjects( element, attribute ) {
-// 	// this.element = element;
-// 	// this.attribute = attribute;
-// 	element.children.
-// }	
+};

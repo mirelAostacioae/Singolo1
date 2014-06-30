@@ -138,7 +138,8 @@
 	<script type="text/javascript">
 
 		var active = true;
-	    $('.header-menu-bar').on('click', toggleMenuBar);
+		var headerToggle = new AdapptiveHeader($('.header-nav'), 'active-nav-bar', 'inactive-nav-bar', 90);
+	    $('.header-menu-bar').on('click', headerToggle.toggleMenuBar.bind(headerToggle));
 
 
 
@@ -169,7 +170,7 @@
 			marginLeft: - sliderCarousel.index * sliderCarousel.pageWidth
 		});
 
-		resizeHeight ();
+		headerToggle.resizeHeight ();
 
 		// width = Math.min(sliderCarousel.pageWidth, 350);
 		// var height = width * 9 / 16;
