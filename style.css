@@ -22,10 +22,6 @@ html, body{
 	min-width: 300px;
 }
 .services .site-width{
-	max-width: 930px;
-	padding-left: 15px;
-	/* margin-left: 15px; */
-	padding-right: 15px;
 	text-align: center;
 }
 header{
@@ -130,8 +126,6 @@ header{
 .wrapper-slider .site-width{
 
 	overflow: hidden;
-	max-width: 960px;
-	min-width: 300px;
 
 }
 .slide-content{
@@ -154,10 +148,10 @@ header{
 	top: 255px;
 }
 .site-width .arrow--left{
-	left: 0;
+	left: 15px;
 }
 .site-width .arrow--right{
-	right: 0;
+	right: 15px;
 }
 
 .services{
