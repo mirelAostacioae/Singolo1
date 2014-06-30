@@ -216,7 +216,32 @@ header{
 .container .container-img{
 	display: inline-block;
 }
+@media all and (min-width: 647px) and (max-width: 947px) {
 
+
+	.container{
+
+			width: 50%;
+
+		}
+	.container-description {
+		right: 15px;
+		width: auto;
+	}	
+}
+@media all and (min-width: 500px) and (max-width: 646px) {
+	
+	.container{
+			
+			width: 80%;
+
+		}
+	.container-description {
+		right: 15px;
+		width: auto;
+	}
+
+}
 .about-main-content{
 	background-color: #f2f2f2;
 	padding-top:65px;
