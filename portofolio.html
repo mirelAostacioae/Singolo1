@@ -81,9 +81,22 @@
 		</div>
 	</footer>
 	<script type="text/javascript">
+
+		var active = true;
+		var headerToggle = new AdapptiveHeader($('.header-nav'), 'active-nav-bar', 'inactive-nav-bar', 90);
+	    $('.header-menu-bar').on('click', headerToggle.toggleMenuBar.bind(headerToggle));
+
+	    resize = function() {
+	    	headerToggle.resizeHeight ();
+	    }
+
+	    resize($('.slide-content'));
+		$(window).on('resize', function () {
+			resize($('.slide-content'));
+		} )	
+
+
 		var buttonProjects = $('button.p-button');
-
-
 		buttonProjects.on('click', function () {
 
 			buttonClick( $('div.container-projects'), $(this).data('type') )

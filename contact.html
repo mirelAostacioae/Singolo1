@@ -73,9 +73,18 @@
 		</div>
 	</footer>
 <script type="text/javascript">
+	var active = true;
+	var headerToggle = new AdapptiveHeader($('.header-nav'), 'active-nav-bar', 'inactive-nav-bar', 90);
+    $('.header-menu-bar').on('click', headerToggle.toggleMenuBar.bind(headerToggle));
 
-		var active = true;
-	    $('.header-menu-bar').on('click', toggleMenuBar);
+    resize = function() {
+    	headerToggle.resizeHeight ();
+    }
+
+    resize($('.slide-content'));
+	$(window).on('resize', function () {
+		resize($('.slide-content'));
+	} )	
 </script>	
 </body>
 </html>		
