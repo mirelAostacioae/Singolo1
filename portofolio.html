@@ -95,43 +95,58 @@
 			resize($('.slide-content'));
 		} )	
 
-
 		var buttonProjects = $('button.p-button');
 		buttonProjects.on('click', function () {
 
-			buttonClick( $('div.container-projects'), $(this).data('type') )
+			buttonClick( $('div.container-projects'), $(this).data('type') , 200 )
 		} );
 
-		function buttonClick ( container, typeB ) {
+		function buttonClick ( container, typeB , speed) {
 			// body...
 			var type = typeB;
-			console.log(type);
+			
 			var children = container.children();
-			if (type ==='all') {
-				children.css('display', 'inline-block');
-			} else{
-				for (var i = 0; i < children.length; i++) {
-					console.log('works');
-	  				( function( index ) {
-	  					console.log(children.eq(i));
-	  					var typeProject = children.eq(i).data('type');
-	  					console.log(children.eq(i).data('type'));
-						if( typeProject.indexOf(type) >= 0)
-	    					children.eq(i).css('display', 'inline-block');
-	  					else 
-	  						children.eq(i).css('display', 'none');
-	  				})();
-	  			}
-			}
-				
-		};	
-	</script>
-</body>
-<script type="text/javascript">
+			// children.css('display', 'inline-block');
+			// console.log( "Aici", children.filter( function() { return $(this).css("display") == "inline-block" }));
+			// children.filter( function() { return $(this).css("display") == "inline-block" }).fadeOut();
+			childrenVisible = container.children('a:visible');
+			console.log(childrenVisible);
+			childrenVisible.children().fadeOut(speed);
+			childrenVisible.fadeOut(speed, function() {
+				if (type ==='all') {
+			
+				children.fadeIn();
+				children.children().fadeIn();
 
-		var active = true;
-	    $('.header-menu-bar').on('click', toggleMenuBar);
-</script>	
+
+				}  else {
+
+
+
+				for (var i = 0; i < children.length; i++) {
+						
+						
+	  					var typeProject = children.eq(i).data('type');
+	  					
+
+						if( typeProject.indexOf(type) >= 0)
+
+	    					children.eq(i).fadeIn(speed);
+	    					children.eq(i).children().fadeIn(speed);
+
+	  					// else 
+	  					// 	children.eq(i).css({
+								
+	    			// 			'opacity': 1,
+	    			// 			'display':'none'
+
+	    			// 		});
+	  			}
+				}
+			});
+		};
+	</script>
+</body>	
 </body>
 </html>	
 
